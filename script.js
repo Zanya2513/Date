@@ -1,5 +1,5 @@
 document.getElementById('yesBtn').addEventListener('click', function() {
-    document.getElementById('response').innerHTML = "Yay! I can't wait!";
+    document.getElementById('response').innerHTML = "Yay! I can't wait!\nNo tumhare liye option h hi nhi";
 });
 
 document.getElementById('noBtn').addEventListener('mouseover', moveButton);
