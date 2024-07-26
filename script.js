@@ -1,22 +1,29 @@
-document.getElementById('yesBtn').addEventListener('click', function() {
-    document.getElementById('response').innerHTML = "Yay! I can't wait!\nNo tumhare liye option h hi nhi";
+let page = 1;
+const messages = [
+    'Please think again',
+    'Maan bhi jao na ab',
+    'Baby maan jao kitna Baoo khaoge',
+    'Gaand mara (I still love you, so say yes)'
+];
+
+const yesButton = document.querySelector('.yes-button');
+const noButton = document.querySelector('.no-button');
+const heading = document.querySelector('h1');
+
+yesButton.addEventListener('click', () => {
+    window.location.href = 'yes.html';
 });
 
-document.getElementById('noBtn').addEventListener('mouseover', moveButton);
-document.getElementById('noBtn').addEventListener('click', showNoMessage);
-
-function moveButton() {
-    const button = document.getElementById('noBtn');
-    const container = document.querySelector('.container');
-    const containerRect = container.getBoundingClientRect();
-
-    const newTop = Math.random() * (containerRect.height - button.offsetHeight);
-    const newLeft = Math.random() * (containerRect.width - button.offsetWidth);
-
-    button.style.top = `${newTop}px`;
-    button.style.left = `${newLeft}px`;
-}
-
-function showNoMessage() {
-    document.getElementById('response').innerHTML = "No tumhare liye option h hi nhi";
-}
+noButton.addEventListener('click', () => {
+    if (page < messages.length - 1) {
+        heading.textContent = messages[page];
+        page++;
+    } else if (page === messages.length - 1) {
+        heading.textContent = messages[page];
+        page++;
+        noButton.classList.add('moving');
+    } else {
+        noButton.style.top = `${Math.random() * 80 + 10}%`;
+        noButton.style.left = `${Math.random() * 80 + 10}%`;
+    }
+});
